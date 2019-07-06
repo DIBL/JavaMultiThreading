@@ -140,10 +140,9 @@ On other hand `submit()` is an overloaded method, it can take either `Runnable` 
 
 #### 23. Is it possible to start a thread twice?
 No, there is no possibility to start a thread twice. If we does, it throws an exception.
-> It is never legal to start a thread more than once. In particular, a thread may not be restarted once it has completed execution. [6]
-
-Throws:
-IllegalThreadStateException - if the thread was already started.
+> It is never legal to start a thread more than once. In particular, a thread may not be restarted once it has completed execution.
+> Throws:
+> IllegalThreadStateException - if the thread was already started. [6]
 
 #### 24. What about the daemon threads?
 The daemon threads are basically the low priority threads that provides the background support to the user threads. It provides services to the user threads.
