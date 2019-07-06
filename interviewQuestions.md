@@ -19,8 +19,13 @@ A daemon thread is a thread, that does not prevent the JVM from exiting when the
 You can use the `setDaemon()` method to change the Thread daemon properties.
 
 #### 5. What’s difference between `notify()` and `notifyAll()`?
-- Main difference between notify and notifyAll is that notify method will only notify one Thread and notifyAll method will notify all Threads  which are waiting on that monitor or lock.
-- By the way this is something you have been reading in all over places and to be frank,  this statement despite being correct is not complete and its very difficult to understand difference between notify vs notifyAll by just reading this statement. Lot of questions comes in mind like
+- First and main difference between `notify()` and `notifyAll()` method is that, if multiple threads is waiting on any lock in Java, notify method send notification to only one of waiting thread while notifyAll informs all threads waiting on that lock.
+
+- If you use notify method , It's not guaranteed that, which thread will be informed, but if you use notifyAll since all thread will be notified, they will compete for lock and the lucky thread which gets lock will continue. In a way, notifyAll method is safer because it sends notification to all threads, so if any thread misses the notification, there are other threads to do the job, while in the case of `notify()` method if the notified thread misses the notification then it could create subtle, hard to debug issues. 
+
+- Some people argue that using notifyAll can drain more CPU cycles than notify itself but if you really want to sure that your notification doesn't get wasted by any reason, use notifyAll. Since wait method is called from the loop and they check condition even after waking up, calling notifyAll won't lead any side effect, instead it ensures that notification is not dropped.
+
+- Prefer notifyAll over notify whenever in doubt and if you can, avoid using notify and notifyAll altogether, instead use concurrency utility like `CountDownLatch`, `CyclicBarrier`, and `Semaphore` to write your concurrency code. 
 
 #### 6. What’s the states of a thread?
 read state. A thread can be in one of the following states:
