@@ -145,19 +145,16 @@ No, there is no possibility to start a thread twice. If we does, it throws an ex
 > Throws:
 > IllegalThreadStateException - if the thread was already started. [6]
 
-#### 24. What about the daemon threads?
-
-
-#### 25. What is static synchronization?
+#### 24. What is static synchronization?
 If you make any static method as synchronized, the lock will be on the class not on object. 
 
-#### 26. Thread Commutation Methods
+#### 25. Thread Commutation Methods
 - `wait()`
 - `sleep()`
 - `notify()`
 - `notifyAll()`
 
-#### 27. Use Executor create Thread Pool
+#### 26. Use Executor create Thread Pool
 ```
 public class TestThreadPool {  
      public static void main(String[] args) {  
@@ -173,7 +170,7 @@ public class TestThreadPool {
  }
  ```
  
- #### 28. Optimistic Locking using StampedLock
+ #### 27. Optimistic Locking using StampedLock
 - In contrast to normal read locks an optimistic lock doesn't prevent other threads to obtain a write lock instantaneously. After sending the first thread to sleep for one second the second thread obtains a write lock without waiting for the optimistic read lock to be released. From this point the optimistic read lock is no longer valid. Even when the write lock is released the optimistic read locks stays invalid.
 
 - So when working with optimistic locks you have to validate the lock every time after accessing any shared mutable variable to make sure the read was still valid.
