@@ -120,14 +120,14 @@ This is tricky question on threading, blocking can result on many ways, if threa
 #### 18. What is FutureTask in Java? 
 FutureTask represents a cancellable asynchronous computation in concurrent Java application. This class provides a base implementation of Future, with methods to start and cancel a computation, query to see if the computation is complete, and retrieve the result of the computation. The result can only be retrieved when the computation has completed; the get methods will block if the computation has not yet completed. A FutureTask object can be used to wrap a Callable or Runnable object. Since FutureTask also implements Runnable, it can be submitted to an Executor for execution.
 
-#### 19. What is thread pool? Why should you thread pool in Java?
+#### 19. What is thread pool? Why should you use thread pool in Java?
 Creating thread is expensive in terms of time and resource. If you create thread at time of request processing it will slow down your response time, also there is only a limited number of threads a process can create. To avoid both of these issues, a pool of thread is created when application starts-up and threads are reused for request processing. This pool of thread is known as "thread pool" and threads are known as worker thread. From JDK 1.5 release, Java API provides Executor framework, which allows you to create different types of thread pools e.g. single thread pool, which process one task at a time, fixed thread pool (a pool of fixed number of threads) or cached thread pool (an expandable thread pool suitable for applications with many short lived tasks). See this article to learn more about thread pools in Java to prepare detailed answer of this question.
 
 #### 20. How do you check if a Thread holds a lock or not?
 There is a method called `Thread.holdsLock(Object obj)` on `java.lang.Thread`, it returns true if and only if the current thread holds the monitor lock on the specified object.
 
 #### 21. What happens if you submit a task when the queue of the thread pool is already filled? 
-This is another tricky question on my list. Many programmers will think that it will block until a task is cleared but its true. ThreadPoolExecutor's `submit()` method throws RejectedExecutionException if the task cannot be scheduled for execution.
+ThreadPoolExecutor's `submit()` method throws RejectedExecutionException if the task cannot be scheduled for execution.
 
 #### 22. What is the difference between the submit() and execute() method thread pool in Java? 
 A main difference between the `submit()` and `execute()` method is that `ExecuterService.submit()` can return result of computation because it has a return type of Future, but `execute()` method cannot return anything because it's return type is void. 
