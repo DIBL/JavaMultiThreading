@@ -148,7 +148,7 @@ No, there is no possibility to start a thread twice. If we does, it throws an ex
 #### 24. What is static synchronization?
 If you make any static method as synchronized, the lock will be on the class not on object. 
 
-#### 25. Thread Commutation Methods
+#### 25. Thread Communication Methods
 - `wait()`
 - `sleep()`
 - `notify()`
