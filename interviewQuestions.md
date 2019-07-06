@@ -18,7 +18,7 @@ Essentially, volatile is used to indicate that a variable's value will be modifi
 A daemon thread is a thread, that does not prevent the JVM from exiting when the program finishes but the thread is still running. An example for a daemon thread is the garbage collection.
 You can use the `setDaemon()` method to change the Thread daemon properties.
 
-#### 5. What’s difference between `notify()` and n`otifyAll()`?
+#### 5. What’s difference between `notify()` and `notifyAll()`?
 - Main difference between notify and notifyAll isthat notify method will only notify one Thread and notifyAll method will notify all Threads  which are waiting on that monitor or lock.
 - By the way this is something you have been reading in all over places and to be frank,  this statement despite being correct is not complete and its very difficult to understand difference between notify vs notifyAll by just reading this statement. Lot of questions comes in mind like
 
