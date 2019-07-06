@@ -161,6 +161,44 @@ public class TestThreadPool {
     }  
  }
  ```
+ 
+ #### 29. Optimistic Locking using StampedLock
+- In contrast to normal read locks an optimistic lock doesn't prevent other threads to obtain a write lock instantaneously. After sending the first thread to sleep for one second the second thread obtains a write lock without waiting for the optimistic read lock to be released. From this point the optimistic read lock is no longer valid. Even when the write lock is released the optimistic read locks stays invalid.
+
+- So when working with optimistic locks you have to validate the lock every time after accessing any shared mutable variable to make sure the read was still valid.
+
+
+```
+ExecutorService executor = Executors.newFixedThreadPool(2);
+StampedLock lock = new StampedLock();
+
+executor.submit(() -> {
+    long stamp = lock.tryOptimisticRead();
+    try {
+        System.out.println("Optimistic Lock Valid: " + lock.validate(stamp));
+        sleep(1);
+        System.out.println("Optimistic Lock Valid: " + lock.validate(stamp));
+        sleep(2);
+        System.out.println("Optimistic Lock Valid: " + lock.validate(stamp));
+    } finally {
+        lock.unlock(stamp);
+    }
+});
+
+executor.submit(() -> {
+    long stamp = lock.writeLock();
+    try {
+        System.out.println("Write Lock acquired");
+        sleep(2);
+    } finally {
+        lock.unlock(stamp);
+        System.out.println("Write done");
+    }
+});
+
+stop(executor);
+```
+ 
 [1]: https://www.java67.com/2013/03/difference-between-wait-vs-notify-vs-notifyAll-java-thread.html
 [2]: https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/
 [3]: https://winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/
