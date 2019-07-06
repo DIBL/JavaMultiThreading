@@ -127,7 +127,7 @@ Creating thread is expensive in terms of time and resource. If you create thread
 There is a method called `Thread.holdsLock(Object obj)` on `java.lang.Thread`, it returns true if and only if the current thread holds the monitor lock on the specified object.
 
 #### 21. What happens if you submit a task when the queue of the thread pool is already filled? 
-ThreadPoolExecutor's `submit()` method throws RejectedExecutionException if the task cannot be scheduled for execution.
+ThreadPoolExecutor's `submit()` method throws `RejectedExecutionException` if the task cannot be scheduled for execution.
 
 #### 22. What is the difference between the submit() and execute() method thread pool in Java? 
 A main difference between the `submit()` and `execute()` method is that `ExecuterService.submit()` can return result of computation because it has a return type of Future, but `execute()` method cannot return anything because it's return type is void. 
