@@ -28,7 +28,7 @@ You can use the `setDaemon()` method to change the Thread daemon properties.
 - Prefer notifyAll over notify whenever in doubt and if you can, avoid using notify and notifyAll altogether, instead use concurrency utility like `CountDownLatch`, `CyclicBarrier`, and `Semaphore` to write your concurrency code. 
 
 #### 6. What’s the states of a thread? [2]
-A thread can be in one of the following states:
+In Java, to get the current state of the thread, use `Thread.getState()` method to get the current state of the thread. Java provides `java.lang.Thread.State` class that defines the `ENUM` constants for the state of a thread. A thread can be in one of the following states:
 - **NEW**: A thread that has not yet started is in this state.
 - **RUNNABLE**: A thread executing in the Java virtual machine is in this state.
 - **BLOCKED**: A thread that is blocked waiting for a monitor lock is in this state.
