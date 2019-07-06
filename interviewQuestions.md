@@ -49,7 +49,39 @@ A process can have multiple threads but a thread always belongs to a single proc
 - Use `join()` method, T3 calls T2. join, and T2 calls T1.join, this ways T1 will finish first and T3 will finish last. 
 
 #### 10. What is the advantage of new Lock interface over synchronized block in Java? You need to implement a high performance cache which allows multiple reader but single writer to keep the integrity how will you implement it?
-The major advantage of lock interfaces on multi-threaded and concurrent programming is they provide two separate lock for reading and writing which enables you to write high performance data structure like ConcurrentHashMap and conditional blocking. 
+The major advantage of readwritelock interfaces on multi-threaded and concurrent programming is they provide two separate lock for reading and writing which enables you to write high performance data structure like ConcurrentHashMap and conditional blocking. 
+
+```
+ExecutorService executor = Executors.newFixedThreadPool(2);
+Map<String, String> map = new HashMap<>();
+ReadWriteLock lock = new ReentrantReadWriteLock();
+
+executor.submit(() -> {
+    lock.writeLock().lock();
+    try {
+        sleep(1);
+        map.put("foo", "bar");
+    } finally {
+        lock.writeLock().unlock();
+    }
+});
+
+Runnable readTask = () -> {
+    lock.readLock().lock();
+    try {
+        System.out.println(map.get("foo"));
+        sleep(1);
+    } finally {
+        lock.readLock().unlock();
+    }
+};
+
+executor.submit(readTask);
+executor.submit(readTask);
+
+stop(executor);
+```
+
 
 #### 11. What are differences between wait and sleep method in java?
 wait release the lock or monitor while sleep doesn't release any lock or monitor while waiting.
