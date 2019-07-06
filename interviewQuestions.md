@@ -38,7 +38,7 @@ In Java, to get the current state of the thread, use `Thread.getState()` method 
 ![Alt text](https://media.geeksforgeeks.org/wp-content/uploads/threadLifeCycle.jpg)
 
 #### 7. What is difference between forking a process and spawning a thread? 
-- Forking processes:new process will run same code as parent process but in different memory space
+- Forking processes: new process will run same code as parent process but in different memory space
 - Spawning thread: creates another independent path of execution but share same memory space
 
 #### 8. What is the relationship between threads and processes? 
