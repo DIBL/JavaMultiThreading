@@ -42,7 +42,8 @@ In Java, to get the current state of the thread, use `Thread.getState()` method 
 - Spawning thread: creates another independent path of execution but share same memory space
 
 #### 8. What is the relationship between threads and processes? 
-A process can have multiple threads but a thread always belongs to a single process. Two process cannot share memory space until they are purposefully doing inter process communication via shared memory but two threads from same process always share same memory.
+- Thread is subset of Process, in other words one process can contain multiple threads. 
+- Two process runs on different memory space, but all threads share same memory space.
  
 #### 9. You have thread T1, T2 and T3, how will you ensure that thread T2 run after T1 and thread T3 run after T2?
 - `t.join()` instructs the current thread - the one that call `t.join()` - to wait until the `t` thread completes its job before continuing with the statements that follows.
@@ -100,60 +101,57 @@ stop(executor);
 One difference is that you can reuse CyclicBarrier once barrier is broken but you can not reuse CountdownLatch.
  Though both CyclicBarrier and CountDownLatch wait for number of threads on one or more events, main difference between them is that you can not re-use CountDownLatch once count reaches to zero, but you can reuse same CyclicBarrier even after barrier is broken. 
 
-#### 13. Difference between Thread and Process in Java?
-Thread is subset of Process, in other words one process can contain multiple threads. Two process runs on different memory space, but all threads share same memory space.
-
-#### 14. Difference between Runnable and Callable in Java?
+#### 13. Difference between Runnable and Callable in Java?
 both Runnable and Callable represent task which is intended to be executed in separate thread. Runnable is there from JDK 1.0, while Callable was added on JDK 1.5. Main difference between these two is that 
 Callable's call() method can return value and throw Exception, which was not possible with Runnable's run() method
 
-#### 15. How to stop thread in Java?
+#### 14. How to stop thread in Java?
 There was some control methods in JDK 1.0 e.g. `stop()`, `suspend()` and `resume()` which was deprecated in later releases due to potential deadlock threats,. To manually stop, programmers either take advantage of volatile boolean variable and check in every iteration if run method has loops or interrupt threads to abruptly cancel tasks
 
-#### 16.How do you share data between two thread in Java?
+#### 15.How do you share data between two thread in Java?
 You can share data between threads by using shared object, or concurrent data-structure like BlockingQueue. 
 
-#### 17. Why we call `start()` method which in turns calls `run() method`, why not we directly call `run()` method ?
+#### 16. Why we call `start()` method which in turns calls `run() method`, why not we directly call `run()` method ?
 Another classic java multi-threading interview question This was my original doubt when I started programming in thread. Now days mostly asked in phone interview or first round of interview at mid and junior level java interviews. Answer to this question is that, when you call start() method it creates new Thread and execute code declared in run() while directly calling run() method doesn’t create any new thread and execute code on same calling thread.
 
-#### 18. How will you awake a blocked thread in java?
+#### 17. How will you awake a blocked thread in java?
 This is tricky question on threading, blocking can result on many ways, if thread is blocked on IO then I don't think there is a way to interrupt the thread, let me know if there is any, on the other hand if thread is blocked due to result of calling `wait()`, `sleep()` or `join()` method you can interrupt the thread and it will awake by throwing InterruptedException. 
 
-#### 19. What is FutureTask in Java? 
+#### 18. What is FutureTask in Java? 
 FutureTask represents a cancellable asynchronous computation in concurrent Java application. This class provides a base implementation of Future, with methods to start and cancel a computation, query to see if the computation is complete, and retrieve the result of the computation. The result can only be retrieved when the computation has completed; the get methods will block if the computation has not yet completed. A FutureTask object can be used to wrap a Callable or Runnable object. Since FutureTask also implements Runnable, it can be submitted to an Executor for execution.
 
-#### 20. What is thread pool? Why should you thread pool in Java?
+#### 19. What is thread pool? Why should you thread pool in Java?
 Creating thread is expensive in terms of time and resource. If you create thread at time of request processing it will slow down your response time, also there is only a limited number of threads a process can create. To avoid both of these issues, a pool of thread is created when application starts-up and threads are reused for request processing. This pool of thread is known as "thread pool" and threads are known as worker thread. From JDK 1.5 release, Java API provides Executor framework, which allows you to create different types of thread pools e.g. single thread pool, which process one task at a time, fixed thread pool (a pool of fixed number of threads) or cached thread pool (an expandable thread pool suitable for applications with many short lived tasks). See this article to learn more about thread pools in Java to prepare detailed answer of this question.
 
-#### 21. How do you check if a Thread holds a lock or not?
-There is a method called `holdsLock()` on `java.lang.Thread`, it returns true if and only if the current thread holds the monitor lock on the specified object.
+#### 20. How do you check if a Thread holds a lock or not?
+There is a method called `Thread.holdsLock(Object obj)` on `java.lang.Thread`, it returns true if and only if the current thread holds the monitor lock on the specified object.
 
-#### 22. What happens if you submit a task when the queue of the thread pool is already filled? 
+#### 21. What happens if you submit a task when the queue of the thread pool is already filled? 
 This is another tricky question on my list. Many programmers will think that it will block until a task is cleared but its true. ThreadPoolExecutor's `submit()` method throws RejectedExecutionException if the task cannot be scheduled for execution.
 
-#### 23. What is the difference between the submit() and execute() method thread pool in Java? 
+#### 22. What is the difference between the submit() and execute() method thread pool in Java? 
 A main difference between the `submit()` and `execute()` method is that `ExecuterService.submit()` can return result of computation because it has a return type of Future, but `execute()` method cannot return anything because it's return type is void. 
 
 Both methods are ways to submit a task to thread pools but there is a slight difference between them. execute(Runnable command) is defined in Executor interface and executes given task in future, but more importantly, it does not return anything. Its return type is void. 
 
 On other hand `submit()` is an overloaded method, it can take either Runnable or Callable task and can return Future object which can hold the pending result of computation. This method is defined on ExecutorService interface, which extends Executor interface, and every other thread pool class e.g. ThreadPoolExecutor or ScheduledThreadPoolExecutor gets these methods.
 
-#### 24. Is it possible to start a thread twice?
+#### 23. Is it possible to start a thread twice?
 No, there is no possibility to start a thread twice. If we does, it throws an exception.
 
-#### 25. What about the daemon threads?
+#### 24. What about the daemon threads?
 The daemon threads are basically the low priority threads that provides the background support to the user threads. It provides services to the user threads.
 
-#### 26. What is static synchronization?
+#### 25. What is static synchronization?
 If you make any static method as synchronized, the lock will be on the class not on object. 
 
-#### 27. Thread Commutation Methods
+#### 26. Thread Commutation Methods
 - `wait()`
 - `sleep()`
 - `notify()`
 - `notifyAll()`
 
-#### 28. Use Executor create Thread Pool
+#### 27. Use Executor create Thread Pool
 ```
 public class TestThreadPool {  
      public static void main(String[] args) {  
@@ -169,7 +167,7 @@ public class TestThreadPool {
  }
  ```
  
- #### 29. Optimistic Locking using StampedLock
+ #### 28. Optimistic Locking using StampedLock
 - In contrast to normal read locks an optimistic lock doesn't prevent other threads to obtain a write lock instantaneously. After sending the first thread to sleep for one second the second thread obtains a write lock without waiting for the optimistic read lock to be released. From this point the optimistic read lock is no longer valid. Even when the write lock is released the optimistic read locks stays invalid.
 
 - So when working with optimistic locks you have to validate the lock every time after accessing any shared mutable variable to make sure the read was still valid.
