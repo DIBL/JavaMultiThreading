@@ -129,14 +129,14 @@ There is a method called `Thread.holdsLock(Object obj)` on `java.lang.Thread`, i
 #### 21. What happens if you submit a task when the queue of the thread pool is already filled? 
 ThreadPoolExecutor's `submit()` method throws `RejectedExecutionException` if the task cannot be scheduled for execution.
 
-#### 22. What is the difference between the submit() and execute() method thread pool in Java? 
+#### 22. What is the difference between the `submit()` and `execute()` method thread pool in Java? 
 > Thread is subset of Process, in other words one process can contain multiple threads. Two process runs on different memory space, but all threads share same memory space. [5]
 
-A main difference between the `submit()` and `execute()` method is that `ExecuterService.submit()` can return result of computation because it has a return type of Future, but `execute()` method cannot return anything because it's return type is void. 
+A main difference between the `submit()` and `execute()` method is that `ExecuterService.submit()` can return result of computation because it has a return type of `Future`, but `execute()` method cannot return anything because it's return type is void. 
 
-Both methods are ways to submit a task to thread pools but there is a slight difference between them. execute(Runnable command) is defined in Executor interface and executes given task in future, but more importantly, it does not return anything. Its return type is void. 
+Both methods are ways to submit a task to thread pools but there is a slight difference between them. `execute(Runnable command)` is defined in `Executor` interface and executes given task in future, but more importantly, it does not return anything. Its return type is void. 
 
-On other hand `submit()` is an overloaded method, it can take either Runnable or Callable task and can return Future object which can hold the pending result of computation. This method is defined on ExecutorService interface, which extends Executor interface, and every other thread pool class e.g. ThreadPoolExecutor or ScheduledThreadPoolExecutor gets these methods.
+On other hand `submit()` is an overloaded method, it can take either `Runnable` or `Callable` task and can return `Future` object which can hold the pending result of computation. This method is defined on `ExecutorService` interface, which extends `Executor` interface, and every other thread pool class e.g. `ThreadPoolExecutor` or `ScheduledThreadPoolExecutor` gets these methods.
 
 #### 23. Is it possible to start a thread twice?
 No, there is no possibility to start a thread twice. If we does, it throws an exception.
