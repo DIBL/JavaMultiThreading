@@ -28,14 +28,14 @@ You can use the `setDaemon()` method to change the Thread daemon properties.
 - Prefer notifyAll over notify whenever in doubt and if you can, avoid using notify and notifyAll altogether, instead use concurrency utility like `CountDownLatch`, `CyclicBarrier`, and `Semaphore` to write your concurrency code. 
 
 #### 6. What’s the states of a thread? [2]
-read state. A thread can be in one of the following states:
+A thread can be in one of the following states:
 - **NEW**: A thread that has not yet started is in this state.
 - **RUNNABLE**: A thread executing in the Java virtual machine is in this state.
 - **BLOCKED**: A thread that is blocked waiting for a monitor lock is in this state.
 - **WAITING**: A thread that is waiting indefinitely for another thread to perform a particular action is in this state.
 - **TIMED_WAITING**: A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state.
 - **TERMINATED**: A thread that has exited is in this state.
-
+![Alt text](https://media.geeksforgeeks.org/wp-content/uploads/threadLifeCycle.jpg)
 
 #### 7. What is difference between forking a process and spawning a thread? 
 - Forking processes:new process will run same code as parent process but in different memory space
