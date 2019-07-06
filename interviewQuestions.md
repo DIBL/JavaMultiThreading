@@ -49,7 +49,9 @@ A process can have multiple threads but a thread always belongs to a single proc
 - Use `join()` method, T3 calls T2. join, and T2 calls T1.join, this ways T1 will finish first and T3 will finish last. 
 
 #### 10. What is the advantage of new Lock interface over synchronized block in Java? You need to implement a high performance cache which allows multiple reader but single writer to keep the integrity how will you implement it? [3]
-- The major advantage of readwritelock on multi-threaded and concurrent programming is they provide two separate lock for reading and writing which enables you to write high performance data structure like ConcurrentHashMap and conditional blocking. 
+- Lock implementations provide more extensive locking operations than can be obtained using synchronized methods and statements. They allow more flexible structuring, may have quite different properties, and may support multiple associated Condition objects. [4]
+- A lock is a tool for controlling access to a shared resource by multiple threads. Commonly, a lock provides exclusive access to a shared resource: only one thread at a time can acquire the lock and all access to the shared resource requires that the lock be acquired first. However, some locks may allow concurrent access to a shared resource, such as the read lock of a ReadWriteLock. [4]
+- The major advantage of readwritelock is it provides two separate lock for reading and writing which enables you to write high performance data structure like ConcurrentHashMap and conditional blocking. 
 - When you execute the following code sample you'll notice that both read tasks have to wait the whole second until the write task has finished. After the write lock has been released both read tasks are executed in parallel and print the result simultaneously to the console. They don't have to wait for each other to finish because read-locks can safely be acquired concurrently as long as no write-lock is held by another thread.
 
 ```
@@ -202,3 +204,4 @@ stop(executor);
 [1]: https://www.java67.com/2013/03/difference-between-wait-vs-notify-vs-notifyAll-java-thread.html
 [2]: https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/
 [3]: https://winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/
+[4]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html
