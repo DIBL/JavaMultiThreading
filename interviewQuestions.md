@@ -87,9 +87,15 @@ stop(executor);
 
 
 #### 11. What are differences between wait and sleep method in java?
-wait release the lock or monitor while sleep doesn't release any lock or monitor while waiting.
- Wait is used for inter-thread communication while sleep is used to introduce pause on execution.
-在`java.lang.Thread`类中，提供了`sleep()`，而`java.lang.Object`类中提供了`wait()`，sleep need try catch 
+- `wait()` 
+	- release the lock or monitor
+	- wait is used for inter-thread communication
+	- 在`java.lang.Thread`类中，提供了`sleep()`
+- `sleep()` 
+	- doesn't release any lock or monitor while waiting
+  	- leep is used to introduce pause on execution.
+	- `java.lang.Object`类中提供了`wait()`
+	- sleep need try catch interruption
 
 #### 12. What is difference between CyclicBarriar  and CountdownLatch in Java ?
 One difference is that you can reuse CyclicBarrier once barrier is broken but you can not reuse ContdownLatch.
