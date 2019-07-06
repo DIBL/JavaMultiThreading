@@ -1,7 +1,7 @@
 #### 1.Multi-thread
-Two ways to create thread: extends from thread class, or implement runnable interface (prefer).
-Yield() and sleeping(): yield changes thread from running state to runnable state; 
-sleeping() changes thread from running state to waiting state();
+Two ways to create thread: extends from Thread class, or implement runnable interface (prefer).
+`yield()` and `sleeping()`: `yield()` changes thread from running state to runnable state; 
+`sleeping()` changes thread from running state to waiting state();
 Threads can communicate with each other by wait(), notify(), notifyAll() method.
 Used in user interface, like when you open the interface, it takes a long time to open the whole page, in the same time you can click your mouse on some button to do something.
 
