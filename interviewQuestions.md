@@ -45,8 +45,8 @@ In Java, to get the current state of the thread, use `Thread.getState()` method 
 A process can have multiple threads but a thread always belongs to a single process. Two process cannot share memory space until they are purposefully doing inter process communication via shared memory but two threads from same process always share same memory.
  
 #### 9. You have thread T1, T2 and T3, how will you ensure that thread T2 run after T1 and thread T3 run after T2?
-Use `join()` method
-T3 calls T2. join, and T2 calls T1.join, this ways T1 will finish first and T3 will finish last. 
+- `t.join()` instructs the current thread - the one that call `t.join()` - to wait until the `t` thread completes its job before continuing with the statements that follows.
+- Use `join()` method, T3 calls T2. join, and T2 calls T1.join, this ways T1 will finish first and T3 will finish last. 
 
 #### 10. What is the advantage of new Lock interface over synchronized block in Java? You need to implement a high performance cache which allows multiple reader but single writer to keep the integrity how will you implement it?
 The major advantage of lock interfaces on multi-threaded and concurrent programming is they provide two separate lock for reading and writing which enables you to write high performance data structure like ConcurrentHashMap and conditional blocking. 
