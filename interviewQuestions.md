@@ -130,6 +130,8 @@ There is a method called `Thread.holdsLock(Object obj)` on `java.lang.Thread`, i
 ThreadPoolExecutor's `submit()` method throws `RejectedExecutionException` if the task cannot be scheduled for execution.
 
 #### 22. What is the difference between the submit() and execute() method thread pool in Java? 
+> Thread is subset of Process, in other words one process can contain multiple threads. Two process runs on different memory space, but all threads share same memory space. [5]
+
 A main difference between the `submit()` and `execute()` method is that `ExecuterService.submit()` can return result of computation because it has a return type of Future, but `execute()` method cannot return anything because it's return type is void. 
 
 Both methods are ways to submit a task to thread pools but there is a slight difference between them. execute(Runnable command) is defined in Executor interface and executes given task in future, but more importantly, it does not return anything. Its return type is void. 
@@ -208,3 +210,4 @@ stop(executor);
 [2]: https://www.geeksforgeeks.org/lifecycle-and-states-of-a-thread-in-java/
 [3]: https://winterbe.com/posts/2015/04/30/java8-concurrency-tutorial-synchronized-locks-examples/
 [4]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html
+[5]: https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html#submit(java.lang.Runnable)
