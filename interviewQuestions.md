@@ -85,7 +85,6 @@ executor.submit(readTask);
 stop(executor);
 ```
 
-
 #### 11. What are differences between wait and sleep method in java?
 - `wait()` 
 	- release the lock or monitor
@@ -98,7 +97,7 @@ stop(executor);
 	- sleep need try catch interruption
 
 #### 12. What is difference between CyclicBarriar  and CountdownLatch in Java ?
-One difference is that you can reuse CyclicBarrier once barrier is broken but you can not reuse ContdownLatch.
+One difference is that you can reuse CyclicBarrier once barrier is broken but you can not reuse CountdownLatch.
  Though both CyclicBarrier and CountDownLatch wait for number of threads on one or more events, main difference between them is that you can not re-use CountDownLatch once count reaches to zero, but you can reuse same CyclicBarrier even after barrier is broken. 
 
 #### 13. Difference between Thread and Process in Java?
