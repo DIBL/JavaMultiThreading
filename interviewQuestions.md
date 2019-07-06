@@ -15,8 +15,9 @@ synchronized methods and synchronized block.
 Essentially, volatile is used to indicate that a variable's value will be modified by different threads.
 
 #### 4. Daemon Thread.
-A daemon thread is a thread, that does not prevent the JVM from exiting when the program finishes but the thread is still running. An example for a daemon thread is the garbage collection.
-You can use the `setDaemon()` method to change the Thread daemon properties.
+- The daemon threads are basically the low priority threads that provides the background support to the user threads. It provides services to the user threads.
+- A daemon thread is a thread, that does not prevent the JVM from exiting when the program finishes but the thread is still running. An example for a daemon thread is the garbage collection.
+- You can use the `setDaemon()` method to change the Thread daemon properties.
 
 #### 5. What’s difference between `notify()` and `notifyAll()`? [1]
 - First and main difference between `notify()` and `notifyAll()` method is that, if multiple threads is waiting on any lock in Java, notify method send notification to only one of waiting thread while notifyAll informs all threads waiting on that lock.
@@ -145,7 +146,7 @@ No, there is no possibility to start a thread twice. If we does, it throws an ex
 > IllegalThreadStateException - if the thread was already started. [6]
 
 #### 24. What about the daemon threads?
-The daemon threads are basically the low priority threads that provides the background support to the user threads. It provides services to the user threads.
+
 
 #### 25. What is static synchronization?
 If you make any static method as synchronized, the lock will be on the class not on object. 
