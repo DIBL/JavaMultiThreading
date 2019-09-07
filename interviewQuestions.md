@@ -92,11 +92,11 @@ stop(executor);
 - `wait()` 
 	- release the lock or monitor
 	- wait is used for inter-thread communication
-	- 在`java.lang.Thread`类中，提供了`sleep()`
+	- `java.lang.Object`类中提供了`wait()`
 - `sleep()` 
 	- doesn't release any lock or monitor while waiting
   	- leep is used to introduce pause on execution.
-	- `java.lang.Object`类中提供了`wait()`
+	- `java.lang.Thread`类中，提供了`sleep()`
 	- sleep need try catch interruption
 
 #### 12. What is difference between CyclicBarriar  and CountdownLatch in Java ?
