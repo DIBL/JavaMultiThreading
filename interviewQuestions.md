@@ -95,7 +95,7 @@ stop(executor);
 	- `java.lang.Object`类中提供了`wait()`
 - `sleep()` 
 	- doesn't release any lock or monitor while waiting
-  	- leep is used to introduce pause on execution.
+  	- sleep is used to introduce pause on execution.
 	- `java.lang.Thread`类中，提供了`sleep()`
 	- sleep need try catch interruption
 
