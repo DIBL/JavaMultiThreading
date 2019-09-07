@@ -100,7 +100,10 @@ stop(executor);
 	- sleep need try catch interruption
 
 #### 12. What is difference between CyclicBarriar  and CountdownLatch in Java ?
-One difference is that you can reuse CyclicBarrier once barrier is broken but you can not reuse CountdownLatch.
+- CountdownLatch: A synchronization aid that allows one or more threads to wait until a set of operations being performed in other threads completes.
+A CountDownLatch is initialized with a given count. The await methods block until the current count reaches zero due to invocations of the countDown() method, after which all waiting threads are released and any subsequent invocations of await return immediately. This is a one-shot phenomenon -- the count cannot be reset. If you need a version that resets the count, consider using a CyclicBarrier.
+
+- One difference is that you can reuse CyclicBarrier once barrier is broken but you can not reuse CountdownLatch.
  Though both CyclicBarrier and CountDownLatch wait for number of threads on one or more events, main difference between them is that you can not re-use CountDownLatch once count reaches to zero, but you can reuse same CyclicBarrier even after barrier is broken. 
 
 #### 13. Difference between Runnable and Callable in Java?
