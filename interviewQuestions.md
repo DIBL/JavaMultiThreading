@@ -11,7 +11,7 @@ Used in user interface, like when you open the interface, it takes a long time t
 #### 2. Synchronized type?
 synchronized methods and synchronized block.
 
-#### 3. What's violate?
+#### 3. What's volatile?
 Essentially, volatile is used to indicate that a variable's value will be modified by different threads.
 
 #### 4. Daemon Thread.
