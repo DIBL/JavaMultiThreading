@@ -92,7 +92,7 @@ stop(executor);
 - `wait()` 
 	- release the lock or monitor
 	- wait is used for inter-thread communication
-	- `java.lang.Object`类中提供了`wait()`
+	- `java.lang.Object`类中，提供了`wait()`
 - `sleep()` 
 	- doesn't release any lock or monitor while waiting
   	- sleep is used to introduce pause on execution.
